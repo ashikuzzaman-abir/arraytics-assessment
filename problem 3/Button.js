@@ -2,49 +2,28 @@
 import React from 'react';
 
 const Button = ({ variant, children, onClick }) => {
-	const renderContent = () => {
-		if (variant === 'icon-arrow-primary') {
-			return (
-				<button
-					style={{ backgroundColor: 'blue', color: 'white' }}
-					onClick={onClick}
-				>
-					<span>&rarr;</span> {children}
-				</button>
-			);
-		} else if (variant === 'icon-arrow-secondary') {
-			return (
-				<button
-					style={{ backgroundColor: 'gray', color: 'black' }}
-					onClick={onClick}
-				>
-					<span>&rarr;</span> {children}
-				</button>
-			);
-		} else if (variant === 'primary') {
-			return (
-				<button
-					style={{ backgroundColor: 'blue', color: 'white' }}
-					onClick={onClick}
-				>
-					{children}
-				</button>
-			);
-		} else if (variant === 'secondary') {
-			return (
-				<button
-					style={{ backgroundColor: 'gray', color: 'black' }}
-					onClick={onClick}
-				>
-					{children}
-				</button>
-			);
-		} else {
-			return <button onClick={onClick}>{children}</button>;
-		}
+	const styles = {
+		'icon-arrow-primary': {
+			backgroundColor: 'blue',
+			color: 'white',
+			icon: true,
+		},
+		'icon-arrow-secondary': {
+			backgroundColor: 'gray',
+			color: 'black',
+			icon: true,
+		},
+		primary: { backgroundColor: 'blue', color: 'white' },
+		secondary: { backgroundColor: 'gray', color: 'black' },
 	};
 
-	return renderContent();
+	const { backgroundColor, color, icon } = styles[variant] || {};
+
+	return (
+		<button style={{ backgroundColor, color }} onClick={onClick}>
+			{icon && <span>&rarr;</span>} {children}
+		</button>
+	);
 };
 
 export default Button;
