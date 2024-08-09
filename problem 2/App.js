@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
 
@@ -8,9 +8,12 @@ const App = () => {
 		{ id: 2, name: 'Banana', price: 2 },
 	]);
 
-	const addProduct = (product) => {
-		setProducts([...products, { ...product, id: products.length + 1 }]);
-	};
+	const addProduct = useCallback((product) => {
+		setProducts((prevProducts) => [
+			...prevProducts,
+			{ ...product, id: prevProducts.length + 1 },
+		]);
+	}, []);
 
 	return (
 		<div>

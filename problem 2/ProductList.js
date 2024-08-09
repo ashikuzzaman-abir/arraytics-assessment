@@ -4,13 +4,13 @@ const ProductList = ({ products }) => {
 	console.log('ProductList rendered');
 	return (
 		<ul>
-			{products.map((product) => (
-				<li key={product.id}>
-					{product.name} - ${product.price}
+			{products.map(({ id, name, price }) => (
+				<li key={id}>
+					{name} - ${price}
 				</li>
 			))}
 		</ul>
 	);
 };
 
-export default ProductList;
+export default React.memo(ProductList);
