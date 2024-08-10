@@ -20,7 +20,7 @@ const PlanCard: React.FC<PlanCardProps> = () => {
 				color={accentColor.Basic.primary}
 				price={`$399`}
 				pricePostfix='/monthly'
-				discount={'$450'}
+				discount={'$450 /monthly'}
 				planName='Basic'
 			/>
 			<Tag

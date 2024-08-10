@@ -23,7 +23,7 @@ const DropdownHeader = styled.div<{ $color: string }>`
 
 const DropdownList = styled.ul<{ $color: string; isOpen: boolean }>`
 	background: white;
-	border: 1px solid ${(props) => props.$color};
+	border: 1px solid ${borderColor};
 	border-radius: 8px;
 	position: absolute;
 	width: 100%;
@@ -32,6 +32,7 @@ const DropdownList = styled.ul<{ $color: string; isOpen: boolean }>`
 	padding: 0;
 	margin: 0;
 	list-style: none;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	/* max-height: 150px; */
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
 	transition: display 0.3s;
