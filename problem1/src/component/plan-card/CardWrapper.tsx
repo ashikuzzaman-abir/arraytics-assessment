@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const CardWrapper = styled.div<{ $color: string }>`
 	border-radius: 8px;
 	padding: 24px 20px;
+	position: relative;
 	flex-direction: column;
 	display: flex;
 	width: 100%;

@@ -18,6 +18,7 @@ const FeatureListWrapper = styled.div`
 	gap: 12px;
 	width: 100%;
 	padding: 0 0 32px 0;
+	user-select: none;
 `;
 
 const FeatureTitle = styled.h3`
@@ -25,6 +26,7 @@ const FeatureTitle = styled.h3`
 	font-weight: 500;
 	color: ${textColors.primary};
 	padding: 8px 0;
+	user-select: none;
 `;
 
 const TooltipText = styled.p`

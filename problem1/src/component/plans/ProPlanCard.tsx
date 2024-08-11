@@ -9,9 +9,8 @@ import FeatureList from '../plan-card/FeatureList';
 import SubmitButton from '../plan-card/SubmitButton';
 import { plans } from '@/data/plans';
 import { useAppDispatch, useAppSelector } from '@/store';
-import {
-	setSelectedPro,
-} from '@/store/slices/plans';
+import { setSelectedPro } from '@/store/slices/plans';
+import MostPopularTag from '../plan-card/MostPopularTag';
 
 type PlanCardProps = {};
 
@@ -85,6 +84,7 @@ const ProPlanCard: React.FC<PlanCardProps> = () => {
 			<SubmitButton $color={accentColor[planName].primary}>
 				Select Plan
 			</SubmitButton>
+			<MostPopularTag color={accentColor[planName].primary} />
 		</CardWrapper>
 	);
 };
