@@ -2,23 +2,31 @@ import { borderColor } from '@/theme';
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { RiArrowDropDownLine } from 'react-icons/ri';
+import Tooltip from '../tooltip/Tooltip';
+import { IoIosInformationCircleOutline } from 'react-icons/io';
 
 const DropdownContainer = styled.div`
 	position: relative;
 	width: 100%;
+	@media screen and (max-width: 468px) {
+		width: fit-content;
+	}
 `;
 
 const DropdownHeader = styled.div<{ $color: string }>`
 	background: white;
 	border: 1px solid ${(props) => props.$color};
-	padding: 6px 12px;
+	padding: 6px 8px;
 	border-radius: 8px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
 	font-size: 14px;
+	letter-spacing: -1px;
 	color: ${(props) => props.$color};
+	user-select: none;
+	flex: 1;
 `;
 
 const DropdownList = styled.ul<{ $color: string; isOpen: boolean }>`
@@ -32,7 +40,7 @@ const DropdownList = styled.ul<{ $color: string; isOpen: boolean }>`
 	padding: 0;
 	margin: 0;
 	list-style: none;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 	/* max-height: 150px; */
 	display: ${(props) => (props.isOpen ? 'block' : 'none')};
 	transition: display 0.3s;
@@ -46,12 +54,14 @@ const DropdownListItem = styled.li<{ $bgColor?: string; $color?: string }>`
 	color: ${(props) => props.$color};
 	border-bottom: 1px solid ${borderColor};
 	user-select: none;
+	letter-spacing: -1px;
+
 	&:hover {
 		background: ${(props) => props.$bgColor};
 	}
 `;
 
-const InfoIcon = styled.div<{ isOpen: boolean }>`
+const DropdownIcon = styled.div<{ isOpen: boolean }>`
 	/* width: 16px;
 	height: 16px; */
 	display: inline-flex;
@@ -62,18 +72,26 @@ const InfoIcon = styled.div<{ isOpen: boolean }>`
 	transition: transform 0.3s;
 `;
 
-interface Option {
+const HeaderWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 4px;
+`;
+
+type Option = {
 	value: string;
 	label: string;
-}
+};
 
-interface CustomDropdownProps {
+type CustomDropdownProps = {
 	options: Option[];
 	selected: Option;
 	onOptionSelect: (option: Option) => void;
 	color: string;
 	bgColor: string;
-}
+	tooltipContent: string;
+};
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
 	options,
@@ -81,6 +99,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 	onOptionSelect,
 	color,
 	bgColor,
+	tooltipContent,
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
@@ -110,13 +129,17 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 
 	return (
 		<DropdownContainer ref={dropdownRef}>
-			<DropdownHeader $color={color} onClick={toggleDropdown}>
-				{selected.label}
-				<InfoIcon isOpen={isOpen}>
-					{' '}
-					<RiArrowDropDownLine color={color} fontSize={'24px'} />
-				</InfoIcon>
-			</DropdownHeader>
+			<HeaderWrapper>
+				<DropdownHeader $color={color} onClick={toggleDropdown}>
+					<p dangerouslySetInnerHTML={{ __html: selected.label }}></p>
+					<DropdownIcon isOpen={isOpen}>
+						<RiArrowDropDownLine color={color} fontSize={'24px'} />
+					</DropdownIcon>
+				</DropdownHeader>
+				<Tooltip text={tooltipContent}>
+					<IoIosInformationCircleOutline fontSize={'20px'} color={color} />
+				</Tooltip>
+			</HeaderWrapper>
 			<DropdownList $color={color} isOpen={isOpen}>
 				{options.map((option) => (
 					<DropdownListItem
@@ -124,9 +147,8 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 						$color={color}
 						key={option.value}
 						onClick={() => handleOptionClick(option)}
-					>
-						{option.label}
-					</DropdownListItem>
+						dangerouslySetInnerHTML={{ __html: option.label }}
+					></DropdownListItem>
 				))}
 			</DropdownList>
 		</DropdownContainer>

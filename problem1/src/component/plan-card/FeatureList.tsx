@@ -17,6 +17,7 @@ const FeatureListWrapper = styled.div`
 	flex-direction: column;
 	gap: 12px;
 	width: 100%;
+	padding: 0 0 32px 0;
 `;
 
 const FeatureTitle = styled.h3`
@@ -37,14 +38,16 @@ type FeatureListProps = {
 };
 const FeatureList: React.FC<FeatureListProps> = ({ type }) => {
 	const features = plans.features;
-	const freeFeatures = features.filter((feature) => feature.is_pro === '0');
-	const proFeatures = features.filter((feature) => feature.is_pro === '1');
+	const freeFeatures = features.filter(
+		(feature: any) => feature.is_pro === '0'
+	);
+	const proFeatures = features.filter((feature: any) => feature.is_pro === '1');
 	if (type === 'free') {
 		return (
 			<FeatureContainer>
 				<FeatureTitle>Free includes:</FeatureTitle>
 				<FeatureListWrapper>
-					{freeFeatures.map((feature, index) => (
+					{freeFeatures.map((feature: any, index: number) => (
 						<Tooltip key={index} text={feature.feature_desc}>
 							<TooltipText>{feature.feature_title}</TooltipText>
 						</Tooltip>
@@ -58,7 +61,7 @@ const FeatureList: React.FC<FeatureListProps> = ({ type }) => {
 			<FeatureTitle>Everything in free plus:</FeatureTitle>
 
 			<FeatureListWrapper>
-				{proFeatures.map((feature, index) => (
+				{proFeatures.map((feature: any, index: number) => (
 					<Tooltip key={index} text={feature.feature_desc}>
 						<TooltipText>{feature.feature_title}</TooltipText>
 					</Tooltip>

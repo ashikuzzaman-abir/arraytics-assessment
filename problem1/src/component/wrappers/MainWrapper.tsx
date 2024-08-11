@@ -5,8 +5,12 @@ const MainWrapper = styled.div`
 	flex-direction: column;
 	max-width: 1200px;
 	margin: 0 auto;
+	padding: 0 4px;
 	@media screen and (max-width: 468px) {
-		padding: 0 8px;
+		padding: 0 16px;
+	}
+	@media (max-width: 1024px) {
+		padding: 0 16px;
 	}
 `;
 

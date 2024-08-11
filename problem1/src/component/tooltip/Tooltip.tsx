@@ -25,7 +25,7 @@ const TooltipContent = styled.div<{ width: string }>`
 	transform: translateX(-50%);
 	opacity: 0;
 	transition: opacity 0.3s, visibility 0.3s;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 	width: ${(props) => props.width}; /* Set width dynamically */
 	& img {
 		width: 100%;

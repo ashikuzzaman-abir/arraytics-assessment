@@ -24,6 +24,7 @@ const PricingRight = styled.div`
 	height: 100%;
 	flex-direction: column;
 	justify-content: flex-end;
+	margin-top: -8px;
 `;
 
 type CardHeadProps = {

@@ -1,40 +1,52 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Plan {
-  id: number;
-  name: string;
-  price: number;
-}
-
-interface PlansState {
-  plans: Plan[];
-}
+type PlansState = {
+	billingMode: 'Billed monthly' | 'Billed yearly';
+	selectedGrowth: string;
+	selectedBasic: string;
+	selectedPro: string;
+	selectedFree: string;
+};
 
 const initialState: PlansState = {
-  plans: [],
+	billingMode: 'Billed monthly',
+	selectedGrowth: '',
+	selectedBasic: '',
+	selectedPro: '',
+	selectedFree: '',
 };
 
 const plansSlice = createSlice({
-  name: 'plans',
-  initialState,
-  reducers: {
-    addPlan: (state, action: PayloadAction<Plan>) => {
-      state.plans.push(action.payload);
-    },
-    removePlan: (state, action: PayloadAction<number>) => {
-      state.plans = state.plans.filter(plan => plan.id !== action.payload);
-    },
-    updatePlan: (state, action: PayloadAction<Plan>) => {
-      const { id, name, price } = action.payload;
-      const plan = state.plans.find(plan => plan.id === id);
-      if (plan) {
-        plan.name = name;
-        plan.price = price;
-      }
-    },
-  },
+	name: 'plans',
+	initialState,
+	reducers: {
+		setBillingPeriod: (
+			state,
+			action: PayloadAction<'Billed monthly' | 'Billed yearly'>
+		) => {
+			state.billingMode = action.payload;
+		},
+		setSelectedGrowth: (state, action: PayloadAction<string>) => {
+			state.selectedGrowth = action.payload;
+		},
+		setSelectedBasic: (state, action: PayloadAction<string>) => {
+			state.selectedBasic = action.payload;
+		},
+		setSelectedPro: (state, action: PayloadAction<string>) => {
+			state.selectedPro = action.payload;
+		},
+		setSelectedFree: (state, action: PayloadAction<string>) => {
+			state.selectedFree = action.payload;
+		},
+	},
 });
 
-export const { addPlan, removePlan, updatePlan } = plansSlice.actions;
+export const {
+	setBillingPeriod,
+	setSelectedGrowth,
+	setSelectedBasic,
+	setSelectedFree,
+	setSelectedPro,
+} = plansSlice.actions;
 
 export default plansSlice.reducer;

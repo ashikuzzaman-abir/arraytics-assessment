@@ -10,16 +10,20 @@ const TagWrapper = styled.div<{ $bgColor: string; $color: string }>`
 	color: ${(props) => props.$color};
 	background-color: ${(props) => props.$bgColor};
 	border-radius: 32px;
-	padding: 6px 15px;
+	padding: 4px 15px;
 	font-size: 14px;
 	gap: 4px;
 	width: 100%;
+	@media screen and (max-width: 1000px) {
+		width: fit-content;
+	}
 `;
 
 const TagText = styled.p<{ $color: string }>`
 	color: ${(props) => props.$color};
 	font-size: 14px;
 	font-weight: 400;
+	letter-spacing: -1px;
 `;
 
 type TagProps = {
@@ -32,7 +36,10 @@ type TagProps = {
 const Tag: React.FC<TagProps> = ({ body, tooltipContent, color, bgColor }) => {
 	return (
 		<TagWrapper $color={body.color} $bgColor={bgColor}>
-			<TagText $color={color}>{body}</TagText>
+			<TagText
+				$color={color}
+				dangerouslySetInnerHTML={{ __html: body }}
+			></TagText>
 			<div
 				style={{
 					marginTop: '2px',

@@ -55,6 +55,7 @@ const PlanCard: React.FC<PlanCardProps> = () => {
 					value: '1',
 				}}
 				onOptionSelect={() => {}}
+				tooltipContent='Select duration'
 			/>
 			<FeatureList type='pro' />
 			<SubmitButton $color={accentColor.Basic.primary}>

@@ -8,7 +8,7 @@ export const accentColor = {
 		secondary: '#FFF0D9',
 	},
 	Pro: { primary: '#68CB9B', secondary: '#D8FDF0' },
-	Growth: { primary: '#B78DEB' },
+	Growth: { primary: '#B78DEB', secondary: '#B78DEB26' },
 };
 
 export const textColors = {
