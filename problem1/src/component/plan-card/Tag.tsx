@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Tooltip from '../tooltip/Tooltip';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
+import TooltipCentered from '../tooltip/ToolTipCentered';
 
 const TagWrapper = styled.div<{ $bgColor: string; $color: string }>`
 	display: flex;
@@ -45,9 +46,9 @@ const Tag: React.FC<TagProps> = ({ body, tooltipContent, color, bgColor }) => {
 					marginTop: '2px',
 				}}
 			>
-				<Tooltip text={tooltipContent}>
+				<TooltipCentered text={tooltipContent}>
 					<IoIosInformationCircleOutline fontSize={'20px'} color={color} />
-				</Tooltip>
+				</TooltipCentered>
 			</div>
 		</TagWrapper>
 	);

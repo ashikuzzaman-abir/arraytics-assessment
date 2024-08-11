@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import Tooltip from '../tooltip/Tooltip';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
+import TooltipCentered from '../tooltip/ToolTipCentered';
 
 const DropdownContainer = styled.div`
 	position: relative;
 	width: 100%;
-	@media screen and (max-width: 468px) {
+
+	@media screen and (max-width: 1000px) {
 		width: fit-content;
 	}
 `;
@@ -136,9 +138,9 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
 						<RiArrowDropDownLine color={color} fontSize={'24px'} />
 					</DropdownIcon>
 				</DropdownHeader>
-				<Tooltip text={tooltipContent}>
+				<TooltipCentered text={tooltipContent}>
 					<IoIosInformationCircleOutline fontSize={'20px'} color={color} />
-				</Tooltip>
+				</TooltipCentered>
 			</HeaderWrapper>
 			<DropdownList $color={color} isOpen={isOpen}>
 				{options.map((option) => (

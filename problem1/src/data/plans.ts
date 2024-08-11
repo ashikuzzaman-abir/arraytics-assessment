@@ -232,7 +232,7 @@ export const plans: any = {
 			is_pro: '0',
 			feature_title: 'Unlimited channels',
 			feature_desc:
-				'Choose any social channel e.g., Facebook/Messenger/WhatsApp/Instagram & more',
+				'Choose any social channel e.g., Facebook / Messenger / WhatsApp / Instagram & more',
 		},
 		{
 			is_pro: '0',

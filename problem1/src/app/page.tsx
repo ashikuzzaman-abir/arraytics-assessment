@@ -9,6 +9,7 @@ import CardsContainer from '@/component/containers/CardsContainer';
 import FreePlanCard from '@/component/plans/FreePlanCard';
 import BasicPlanCard from '@/component/plans/BasicPlanCard';
 import ProPlanCard from '@/component/plans/ProPlanCard';
+import { useEffect, useState } from 'react';
 
 const BillingSelectionSection = styled.div`
 	display: flex;
@@ -17,24 +18,34 @@ const BillingSelectionSection = styled.div`
 	width: 100%;
 `;
 export default function Home() {
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	useEffect(() => {
+		setIsLoaded(true);
+	}, []);
+
 	return (
 		<main
 			style={{
 				overflowX: 'hidden',
+				background:
+					'linear-gradient(180deg,rgba(183,141,235,.1),rgba(183,141,235,0) 28.39%),#fff',
 			}}
 		>
-			<MainWrapper>
-				<div style={{ height: '100px' }} />
-				<BillingSelectionSection>
-					<BillingSelector />
-				</BillingSelectionSection>
-				<CardsContainer>
-					<FreePlanCard />
-					<BasicPlanCard />
-					<ProPlanCard />
-					<GrowthPlanCard />
-				</CardsContainer>
-			</MainWrapper>
+			{isLoaded && (
+				<MainWrapper>
+					<div style={{ height: '100px' }} />
+					<BillingSelectionSection>
+						<BillingSelector />
+					</BillingSelectionSection>
+					<CardsContainer>
+						<FreePlanCard />
+						<BasicPlanCard />
+						<ProPlanCard />
+						<GrowthPlanCard />
+					</CardsContainer>
+				</MainWrapper>
+			)}
 		</main>
 	);
 }

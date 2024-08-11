@@ -17,16 +17,17 @@ const TooltipContent = styled.div<{ width: string }>`
 	border-radius: 4px;
 	padding: 6px 4px;
 	position: absolute;
-
+	/* min-width: inherit;
+	max-width: 100%; */
 	z-index: 100;
 	bottom: 125%;
 	left: 0;
-	/* transform: translateX(-50%); */
+	/* right:0; */
+	transform: translateX(-80%);
 	opacity: 0;
 	transition: opacity 0.3s, visibility 0.3s;
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-	min-width: ${(props) => props.width};
-	/* min-width: inherit; */
+	width: ${(props) => props.width}; /* Set width dynamically */
 	& img {
 		width: 100%;
 		padding-top: 8px;
@@ -35,8 +36,8 @@ const TooltipContent = styled.div<{ width: string }>`
 		content: '';
 		position: absolute;
 		top: 100%; /* Position at the bottom of the tooltip content */
-		left: 10px;
-		/* transform: translateX(-50%); */
+		left: 86%;
+		transform: translateX(-86%);
 		border-width: 5px;
 		border-style: solid;
 		border-color: #fff transparent transparent transparent;
@@ -57,7 +58,7 @@ type TooltipProps = {
 	children: React.ReactNode;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
+const TooltipCentered: React.FC<TooltipProps> = ({ text, children }) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const [tooltipWidth, setTooltipWidth] = useState('auto');
 
@@ -85,4 +86,4 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
 	);
 };
 
-export default Tooltip;
+export default TooltipCentered;

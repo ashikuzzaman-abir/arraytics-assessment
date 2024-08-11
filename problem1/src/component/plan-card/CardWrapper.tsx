@@ -11,6 +11,7 @@ const CardWrapper = styled.div<{ $color: string }>`
 	height: 100%;
 	border: 1px solid ${borderColor};
 	border-top: 8px solid ${(props) => props.$color};
+	background-color: white;
 `;
 
 export default CardWrapper;
