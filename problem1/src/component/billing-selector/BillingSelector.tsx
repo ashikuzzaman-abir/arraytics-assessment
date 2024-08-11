@@ -14,7 +14,7 @@ const BillingSelectorContainer = styled.div`
 	/* background-color: #f5f5fa; */
 `;
 
-interface BillingOptionProps {
+type BillingOptionProps = {
 	active: boolean;
 }
 
@@ -45,6 +45,7 @@ const SaveTag = styled.div`
 	border-radius: 20px;
 	margin-left: 10px;
 	font-size: 16px;
+	cursor: pointer;
 `;
 
 const BillingSelector: React.FC = () => {

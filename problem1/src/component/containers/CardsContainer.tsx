@@ -5,6 +5,7 @@ const CardsContainer = styled.div`
 	flex-wrap: wrap;
 	gap: 20px;
 	grid-template-columns: repeat(1, 1fr);
+	padding: 0 0 32px 0;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr);

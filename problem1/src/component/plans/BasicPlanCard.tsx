@@ -34,6 +34,7 @@ const BasicPlanCard: React.FC<PlanCardProps> = () => {
 		}
 	}, [selectedBasic]);
 
+	
 	return (
 		<CardWrapper $color={accentColor[planName].primary}>
 			<CardHead
