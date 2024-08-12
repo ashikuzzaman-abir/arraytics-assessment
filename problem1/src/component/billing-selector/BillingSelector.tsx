@@ -16,7 +16,7 @@ const BillingSelectorContainer = styled.div`
 
 type BillingOptionProps = {
 	active: boolean;
-}
+};
 
 const BillingOption = styled.div<BillingOptionProps>`
 	padding: 4px 0;
@@ -33,8 +33,13 @@ const BillingOption = styled.div<BillingOptionProps>`
 const OptionContainer = styled.div<{ isLast: boolean }>`
 	display: flex;
 	align-items: center;
+	text-align: center;
 	border-right: ${(props) =>
 		props.isLast ? 'none' : `1px solid ${borderColor}`};
+	@media (max-width: 468px) {
+		flex-direction: column;
+		gap: 10px;
+	}
 `;
 
 const SaveTag = styled.div`
