@@ -18,3 +18,11 @@
 * **Description**: I refactored the provided codebase, ensuring it adheres to best practices.
 * **Status**: Completed.
 * Codes are in this repository's `problem3` folder
+
+### Start The Problem 1 Application
+
+1. Go to the project's directory `problem1`
+2. Run the following command to install packages in terminal `npm i`
+3. To **start the development** server run this command in terminal `npm run dev`
+4. To **build** the project run this command in terminal `npm run build`
+5. To **start the production** server run this command in terminal `npm run start`
