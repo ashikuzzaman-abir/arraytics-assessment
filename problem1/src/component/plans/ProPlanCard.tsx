@@ -80,7 +80,13 @@ const ProPlanCard: React.FC<PlanCardProps> = () => {
 				/>
 			)}
 
-			<FeatureList type='pro' />
+			<FeatureList
+				type='pro'
+				selectedPlan={{
+					feature_title: selectedPlan?.title,
+					feature_desc: selectedPlan?.text,
+				}}
+			/>
 			<SubmitButton $color={accentColor[planName].primary}>
 				Select Plan
 			</SubmitButton>

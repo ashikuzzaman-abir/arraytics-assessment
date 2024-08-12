@@ -37,13 +37,22 @@ const TooltipText = styled.p`
 
 type FeatureListProps = {
 	type: 'free' | 'pro';
+	selectedPlan?: {
+		feature_desc: string;
+		feature_title: string;
+	};
 };
-const FeatureList: React.FC<FeatureListProps> = ({ type }) => {
+const FeatureList: React.FC<FeatureListProps> = ({ type, selectedPlan }) => {
 	const features = plans.features;
 	const freeFeatures = features.filter(
 		(feature: any) => feature.is_pro === '0'
 	);
-	const proFeatures = features.filter((feature: any) => feature.is_pro === '1');
+	let proFeatures = features.filter((feature: any) => feature.is_pro === '1');
+
+	if (selectedPlan) {
+		proFeatures = [selectedPlan, ...proFeatures];
+	}
+
 	if (type === 'free') {
 		return (
 			<FeatureContainer>
@@ -65,7 +74,11 @@ const FeatureList: React.FC<FeatureListProps> = ({ type }) => {
 			<FeatureListWrapper>
 				{proFeatures.map((feature: any, index: number) => (
 					<Tooltip key={index} text={feature.feature_desc}>
-						<TooltipText>{feature.feature_title}</TooltipText>
+						<TooltipText
+							dangerouslySetInnerHTML={{
+								__html: feature.feature_title,
+							}}
+						/>
 					</Tooltip>
 				))}
 			</FeatureListWrapper>
