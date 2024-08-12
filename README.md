@@ -19,7 +19,7 @@
 * **Status**: Completed.
 * Codes are in this repository's `problem3` folder
 
-### Start The Problem 1 Application
+### Instructions To Start The Problem 1 Application
 
 1. Go to the project's directory `problem1`
 2. Run the following command to install packages in terminal `npm i`
