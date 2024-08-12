@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import ProductList from './ProductList';
 import AddProductForm from './AddProductForm';
 
@@ -15,11 +15,13 @@ const App = () => {
 		]);
 	}, []);
 
+	const memoizedProducts = useMemo(() => products, [products]);
+
 	return (
 		<div>
 			<h1>Product List</h1>
 			<AddProductForm addProduct={addProduct} />
-			<ProductList products={products} />
+			<ProductList products={memoizedProducts} />
 		</div>
 	);
 };
