@@ -37,8 +37,7 @@ const OptionContainer = styled.div<{ isLast: boolean }>`
 	border-right: ${(props) =>
 		props.isLast ? 'none' : `1px solid ${borderColor}`};
 	@media (max-width: 468px) {
-		flex-direction: column;
-		gap: 10px;
+		flex-wrap: wrap;
 	}
 `;
 

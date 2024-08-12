@@ -62,7 +62,7 @@ const TooltipCentered: React.FC<TooltipProps> = ({ text, children }) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const [tooltipWidth, setTooltipWidth] = useState('auto');
 
-	useEffect(() => {
+	const updateTooltipWidth = () => {
 		if (wrapperRef.current) {
 			const grandparent = wrapperRef.current.parentElement?.parentElement;
 			if (grandparent) {
@@ -70,6 +70,15 @@ const TooltipCentered: React.FC<TooltipProps> = ({ text, children }) => {
 				setTooltipWidth(`${grandparentWidth}px`);
 			}
 		}
+	};
+
+	useEffect(() => {
+		updateTooltipWidth();
+		window.addEventListener('resize', updateTooltipWidth);
+
+		return () => {
+			window.removeEventListener('resize', updateTooltipWidth);
+		};
 	}, []);
 
 	return (
